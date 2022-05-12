@@ -50,9 +50,9 @@ public class Pdf {
 	@NotBlank
 	private String pasta;
 	
-	@NotBlank
+
 	private boolean kindle;
-	@NotBlank
+
 	private boolean fisico;
 
 	public long getId() {

@@ -23,28 +23,28 @@ public class Livros {
 	
 	private String subtitulo;
 	
-	
+	@NotBlank
 	private String edicao;
 	
-
+	@NotBlank
 	private String ano;
 	
-
+	@NotBlank
 	private String editora;
 	
-
+	@NotBlank
 	private String cidade;
 	
 	@NotBlank
 	private String genero;
 	
-
+	@NotBlank
 	private String subgenero;
 	
 
 	private boolean nacional;
 	
-	
+	@NotBlank
 	private String idioma;
 
 	public long getId() {
