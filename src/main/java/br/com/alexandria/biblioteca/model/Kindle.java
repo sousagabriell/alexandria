@@ -19,6 +19,15 @@ public class Kindle {
 	@NotBlank
 	private String titulo;
 	
+	@NotBlank
+	private String autor;
+	
+
+	@NotBlank
+	private String foto; 
+	
+	
+
 	private String subtitulo;
 	
 	@NotBlank
@@ -47,6 +56,8 @@ public class Kindle {
 	
 
 	private boolean fisico;
+	
+	private boolean lido;
 
 	public long getId() {
 		return id;
@@ -142,6 +153,26 @@ public class Kindle {
 
 	public void setFisico(boolean fisico) {
 		this.fisico = fisico;
+	}
+	public boolean islido() {
+		return lido;
+	}
+	public void setLido(boolean lido) {
+		this.lido = lido;
+	}
+	public String getAutor() {
+		return autor;
+	}
+
+	public void setAutor(String autor) {
+		this.autor = autor;
+	}
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 }
