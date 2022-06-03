@@ -7,15 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import br.com.alexandria.biblioteca.model.Livros;
 import br.com.alexandria.biblioteca.repository.LivrosRepository;
@@ -36,7 +28,7 @@ public class livrosController {
 	
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Livros> getById(@PathVariable long id) {
+	public ResponseEntity<Livros> getById(@RequestParam long id) {
 		return livrosRepository.findById(id)
 			.map(resposta -> ResponseEntity.ok(resposta))
 			.orElse(ResponseEntity.notFound().build());
@@ -44,7 +36,7 @@ public class livrosController {
 	
 	
 	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<List<Livros>> getByTitulo(@PathVariable String titulo){
+	public ResponseEntity<List<Livros>> getByTitulo(@RequestParam String titulo){
 		return ResponseEntity.ok(livrosRepository.findAllByTituloContainingIgnoreCase(titulo));
 	}
 
