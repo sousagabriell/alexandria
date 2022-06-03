@@ -27,7 +27,7 @@ public class livrosController {
 	}
 	
 
-	@GetMapping("/{id}")
+	@GetMapping("/id")
 	public ResponseEntity<Livros> getById(@RequestParam long id) {
 		return livrosRepository.findById(id)
 			.map(resposta -> ResponseEntity.ok(resposta))
@@ -35,7 +35,7 @@ public class livrosController {
 	}
 	
 	
-	@GetMapping("/titulo/{titulo}")
+	@GetMapping("/titulo")
 	public ResponseEntity<List<Livros>> getByTitulo(@RequestParam String titulo){
 		return ResponseEntity.ok(livrosRepository.findAllByTituloContainingIgnoreCase(titulo));
 	}

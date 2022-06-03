@@ -28,7 +28,7 @@ public class pdfController {
 	}
 	
 
-	@GetMapping("/{id}")
+	@GetMapping("/id")
 	public ResponseEntity<Pdf> getById(@RequestParam long id) {
 		return pdfRepository.findById(id)
 			.map(resposta -> ResponseEntity.ok(resposta))
@@ -36,7 +36,7 @@ public class pdfController {
 	}
 	
 	
-	@GetMapping("/titulo/{titulo}")
+	@GetMapping("/titulo")
 	public ResponseEntity<List<Pdf>> getByTitulo(@RequestParam String titulo){
 		return ResponseEntity.ok(pdfRepository.findAllByTituloContainingIgnoreCase(titulo));
 	}

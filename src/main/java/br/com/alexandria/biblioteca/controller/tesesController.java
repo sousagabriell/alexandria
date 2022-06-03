@@ -26,7 +26,7 @@ public class tesesController {
 	}
 	
 
-	@GetMapping("/{id}")
+	@GetMapping("/id")
 	public ResponseEntity<Teses> getById(@RequestParam long id) {
 		return tesesRepository.findById(id)
 			.map(resposta -> ResponseEntity.ok(resposta))
@@ -34,7 +34,7 @@ public class tesesController {
 	}
 	
 	
-	@GetMapping("/titulo/{titulo}")
+	@GetMapping("/titulo")
 	public ResponseEntity<List<Teses>> getByTitulo(@RequestParam String titulo){
 		return ResponseEntity.ok(tesesRepository.findAllByTituloContainingIgnoreCase(titulo));
 	}

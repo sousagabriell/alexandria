@@ -27,7 +27,7 @@ public class kindleController {
 	}
 	
 
-	@GetMapping("/{id}")
+	@GetMapping("/id")
 	public ResponseEntity<Kindle> getById(@RequestParam long id) {
 		return kindleRepository.findById(id)
 			.map(resposta -> ResponseEntity.ok(resposta))
@@ -35,7 +35,7 @@ public class kindleController {
 	}
 
 
-	@GetMapping("/titulo/{titulo}")
+	@GetMapping("/titulo")
 	public ResponseEntity<List<Kindle>> getByTitulo(@RequestParam String titulo){
 		return ResponseEntity.ok(kindleRepository.findAllByTituloContainingIgnoreCase(titulo));
 	}
