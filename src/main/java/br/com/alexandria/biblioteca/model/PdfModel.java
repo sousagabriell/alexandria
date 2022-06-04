@@ -26,7 +26,8 @@ public class PdfModel extends LivroAbstract{
 	@NotBlank
 	private String pasta;
 
+	private boolean kindle;
 
+	private boolean fisico;
 
-	
 }

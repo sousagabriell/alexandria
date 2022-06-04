@@ -20,13 +20,13 @@ public class tesesController {
 	@Autowired
 	private TesesRepository tesesRepository;
 	
-	@GetMapping
+	@RequestMapping
 	public ResponseEntity<List<TeseModel>> getAll(){
 		return ResponseEntity.ok(tesesRepository.findAll());
 	}
 	
 
-	@GetMapping
+	@RequestMapping(params = "id")
 	public ResponseEntity<TeseModel> getById(@RequestParam(name = "id") long id) {
 		return tesesRepository.findById(id)
 			.map(ResponseEntity::ok)

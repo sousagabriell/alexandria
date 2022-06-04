@@ -21,13 +21,13 @@ public class kindleController {
 	@Autowired
 	private KindleRepository kindleRepository;
 	
-	@GetMapping
+	@RequestMapping
 	public ResponseEntity<List<KindleModel>> getAll(){
 		return ResponseEntity.ok(kindleRepository.findAll());
 	}
 	
 
-	@GetMapping("/{id}")
+	@RequestMapping(params = "id")
 	public ResponseEntity<KindleModel> getById(@RequestParam long id) {
 		return kindleRepository.findById(id)
 			.map(resposta -> ResponseEntity.ok(resposta))

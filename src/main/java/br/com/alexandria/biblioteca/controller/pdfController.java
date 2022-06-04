@@ -22,13 +22,13 @@ public class pdfController {
 	@Autowired
 	private PdfRepository pdfRepository;
 	
-	@GetMapping
+	@RequestMapping
 	public ResponseEntity<List<PdfModel>> getAll(){
 		return ResponseEntity.ok(pdfRepository.findAll());
 	}
 	
 
-	@GetMapping("/{id}")
+	@RequestMapping(params = "id")
 	public ResponseEntity<PdfModel> getById(@RequestParam long id) {
 		return pdfRepository.findById(id)
 			.map(resposta -> ResponseEntity.ok(resposta))

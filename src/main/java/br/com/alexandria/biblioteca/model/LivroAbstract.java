@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @MappedSuperclass
@@ -18,7 +15,8 @@ import javax.validation.constraints.NotBlank;
 @Setter
 public abstract class LivroAbstract {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name="livrosequence", sequenceName="livrosequence")
     private long id;
 
     @NotBlank
@@ -46,6 +44,5 @@ public abstract class LivroAbstract {
     @NotBlank
     private String idioma;
 
-    @NotBlank
     private String tipo_livro;
 }

@@ -21,13 +21,13 @@ public class livrosController {
 	@Autowired
 	private LivrosRepository livrosRepository;
 	
-	@GetMapping
+	@RequestMapping
 	public ResponseEntity<List<FisicoModel>> getAll(){
 		return ResponseEntity.ok(livrosRepository.findAll());
 	}
 	
 
-	@GetMapping("/{id}")
+	@RequestMapping(params = "id")
 	public ResponseEntity<FisicoModel> getById(@RequestParam long id) {
 		return livrosRepository.findById(id)
 			.map(resposta -> ResponseEntity.ok(resposta))

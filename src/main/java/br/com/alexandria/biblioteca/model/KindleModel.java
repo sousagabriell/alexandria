@@ -26,4 +26,6 @@ public class KindleModel extends LivroAbstract{
 	@NotBlank
 	private String editora;
 
+	@NotBlank
+	private boolean fisico;
 }
