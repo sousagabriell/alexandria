@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import br.com.alexandria.biblioteca.model.Teses;
+import br.com.alexandria.biblioteca.model.TeseModel;
 import br.com.alexandria.biblioteca.repository.TesesRepository;
 
 @RestController
@@ -21,36 +21,36 @@ public class tesesController {
 	private TesesRepository tesesRepository;
 	
 	@GetMapping
-	public ResponseEntity<List<Teses>> getAll(){
+	public ResponseEntity<List<TeseModel>> getAll(){
 		return ResponseEntity.ok(tesesRepository.findAll());
 	}
 	
 
-	@GetMapping("/{id}")
-	public ResponseEntity<Teses> getById(@RequestParam long id) {
+	@GetMapping
+	public ResponseEntity<TeseModel> getById(@RequestParam(name = "id") long id) {
 		return tesesRepository.findById(id)
-			.map(resposta -> ResponseEntity.ok(resposta))
+			.map(ResponseEntity::ok)
 			.orElse(ResponseEntity.notFound().build());
 	}
 	
 	
-	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<List<Teses>> getByTitulo(@RequestParam String titulo){
+	@GetMapping("/titulo")
+	public ResponseEntity<List<TeseModel>> getByTitulo(@RequestParam(name = "titulo") String titulo){
 		return ResponseEntity.ok(tesesRepository.findAllByTituloContainingIgnoreCase(titulo));
 	}
 
 	
 	@PostMapping
-	public ResponseEntity<Teses> postPostagem (@Valid @RequestBody Teses postagem){
+	public ResponseEntity<TeseModel> postPostagem (@Valid @RequestBody TeseModel postagem){
 		return ResponseEntity.status(HttpStatus.CREATED).body(tesesRepository.save(postagem));
 	}
 	
 	
 	@PutMapping
-	public ResponseEntity<Teses> putPostagem (@Valid @RequestBody Teses teses){
+	public ResponseEntity<TeseModel> putPostagem (@Valid @RequestBody TeseModel teseModel){
 		
-		return tesesRepository.findById(teses.getId())
-			.map(resposta -> ResponseEntity.ok().body(tesesRepository.save(teses)))
+		return tesesRepository.findById(teseModel.getId())
+			.map(resposta -> ResponseEntity.ok().body(tesesRepository.save(teseModel)))
 			.orElse(ResponseEntity.notFound().build());
 	}
 			

@@ -9,12 +9,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import br.com.alexandria.biblioteca.model.Kindle;
+import br.com.alexandria.biblioteca.model.KindleModel;
 import br.com.alexandria.biblioteca.repository.KindleRepository;
 
 
 @RestController
-@RequestMapping("livroskindle")
+@RequestMapping("/kindle")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class kindleController {
 	
@@ -22,13 +22,13 @@ public class kindleController {
 	private KindleRepository kindleRepository;
 	
 	@GetMapping
-	public ResponseEntity<List<Kindle>> getAll(){
+	public ResponseEntity<List<KindleModel>> getAll(){
 		return ResponseEntity.ok(kindleRepository.findAll());
 	}
 	
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Kindle> getById(@RequestParam long id) {
+	public ResponseEntity<KindleModel> getById(@RequestParam long id) {
 		return kindleRepository.findById(id)
 			.map(resposta -> ResponseEntity.ok(resposta))
 			.orElse(ResponseEntity.notFound().build());
@@ -36,22 +36,22 @@ public class kindleController {
 
 
 	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<List<Kindle>> getByTitulo(@RequestParam String titulo){
+	public ResponseEntity<List<KindleModel>> getByTitulo(@RequestParam String titulo){
 		return ResponseEntity.ok(kindleRepository.findAllByTituloContainingIgnoreCase(titulo));
 	}
 
 	
 	@PostMapping
-	public ResponseEntity<Kindle> postPostagem (@Valid @RequestBody Kindle postagem){
+	public ResponseEntity<KindleModel> postPostagem (@Valid @RequestBody KindleModel postagem){
 		return ResponseEntity.status(HttpStatus.CREATED).body(kindleRepository.save(postagem));
 	}
 	
 	
 	@PutMapping
-	public ResponseEntity<Kindle> putPostagem (@Valid @RequestBody Kindle kindle){
+	public ResponseEntity<KindleModel> putPostagem (@Valid @RequestBody KindleModel kindleModel){
 		
-		return kindleRepository.findById(kindle.getId())
-			.map(resposta -> ResponseEntity.ok().body(kindleRepository.save(kindle)))
+		return kindleRepository.findById(kindleModel.getId())
+			.map(resposta -> ResponseEntity.ok().body(kindleRepository.save(kindleModel)))
 			.orElse(ResponseEntity.notFound().build());
 	}
 			

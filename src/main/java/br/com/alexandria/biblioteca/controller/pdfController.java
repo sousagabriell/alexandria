@@ -10,12 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-import br.com.alexandria.biblioteca.model.Pdf;
+import br.com.alexandria.biblioteca.model.PdfModel;
 import br.com.alexandria.biblioteca.repository.PdfRepository;
 
 
 @RestController
-@RequestMapping("/livrospdf")
+@RequestMapping("/pdf")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class pdfController {
 	
@@ -23,13 +23,13 @@ public class pdfController {
 	private PdfRepository pdfRepository;
 	
 	@GetMapping
-	public ResponseEntity<List<Pdf>> getAll(){
+	public ResponseEntity<List<PdfModel>> getAll(){
 		return ResponseEntity.ok(pdfRepository.findAll());
 	}
 	
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Pdf> getById(@RequestParam long id) {
+	public ResponseEntity<PdfModel> getById(@RequestParam long id) {
 		return pdfRepository.findById(id)
 			.map(resposta -> ResponseEntity.ok(resposta))
 			.orElse(ResponseEntity.notFound().build());
@@ -37,22 +37,22 @@ public class pdfController {
 	
 	
 	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<List<Pdf>> getByTitulo(@RequestParam String titulo){
+	public ResponseEntity<List<PdfModel>> getByTitulo(@RequestParam String titulo){
 		return ResponseEntity.ok(pdfRepository.findAllByTituloContainingIgnoreCase(titulo));
 	}
 
 	
 	@PostMapping
-	public ResponseEntity<Pdf> postPostagem (@Valid @RequestBody Pdf postagem){
+	public ResponseEntity<PdfModel> postPostagem (@Valid @RequestBody PdfModel postagem){
 		return ResponseEntity.status(HttpStatus.CREATED).body(pdfRepository.save(postagem));
 	}
 	
 	
 	@PutMapping
-	public ResponseEntity<Pdf> putPostagem (@Valid @RequestBody Pdf pdf){
+	public ResponseEntity<PdfModel> putPostagem (@Valid @RequestBody PdfModel pdfModel){
 		
-		return pdfRepository.findById(pdf.getId())
-			.map(resposta -> ResponseEntity.ok().body(pdfRepository.save(pdf)))
+		return pdfRepository.findById(pdfModel.getId())
+			.map(resposta -> ResponseEntity.ok().body(pdfRepository.save(pdfModel)))
 			.orElse(ResponseEntity.notFound().build());
 	}
 			

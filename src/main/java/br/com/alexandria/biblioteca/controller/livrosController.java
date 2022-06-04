@@ -9,11 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import br.com.alexandria.biblioteca.model.Livros;
+import br.com.alexandria.biblioteca.model.FisicoModel;
 import br.com.alexandria.biblioteca.repository.LivrosRepository;
 
 @RestController
-@RequestMapping("/livrosfisicos")
+@RequestMapping("/fisico")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 
 public class livrosController {
@@ -22,13 +22,13 @@ public class livrosController {
 	private LivrosRepository livrosRepository;
 	
 	@GetMapping
-	public ResponseEntity<List<Livros>> getAll(){
+	public ResponseEntity<List<FisicoModel>> getAll(){
 		return ResponseEntity.ok(livrosRepository.findAll());
 	}
 	
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Livros> getById(@RequestParam long id) {
+	public ResponseEntity<FisicoModel> getById(@RequestParam long id) {
 		return livrosRepository.findById(id)
 			.map(resposta -> ResponseEntity.ok(resposta))
 			.orElse(ResponseEntity.notFound().build());
@@ -36,22 +36,22 @@ public class livrosController {
 	
 	
 	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<List<Livros>> getByTitulo(@RequestParam String titulo){
+	public ResponseEntity<List<FisicoModel>> getByTitulo(@RequestParam String titulo){
 		return ResponseEntity.ok(livrosRepository.findAllByTituloContainingIgnoreCase(titulo));
 	}
 
 	
 	@PostMapping
-	public ResponseEntity<Livros> postPostagem (@Valid @RequestBody Livros postagem){
+	public ResponseEntity<FisicoModel> postPostagem (@Valid @RequestBody FisicoModel postagem){
 		return ResponseEntity.status(HttpStatus.CREATED).body(livrosRepository.save(postagem));
 	}
 	
 	
 	@PutMapping
-	public ResponseEntity<Livros> putPostagem (@Valid @RequestBody Livros livros){
+	public ResponseEntity<FisicoModel> putPostagem (@Valid @RequestBody FisicoModel fisicoModel){
 		
-		return livrosRepository.findById(livros.getId())
-			.map(resposta -> ResponseEntity.ok().body(livrosRepository.save(livros)))
+		return livrosRepository.findById(fisicoModel.getId())
+			.map(resposta -> ResponseEntity.ok().body(livrosRepository.save(fisicoModel)))
 			.orElse(ResponseEntity.notFound().build());
 	}
 			

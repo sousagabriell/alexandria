@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.alexandria.biblioteca.model.Livros;
+import br.com.alexandria.biblioteca.model.FisicoModel;
 
 @Repository
-public interface LivrosRepository extends JpaRepository<Livros, Long> {
+public interface LivrosRepository extends JpaRepository<FisicoModel, Long> {
 
-	public List <Livros> findAllByTituloContainingIgnoreCase(String titulo);
+	public List <FisicoModel> findAllByTituloContainingIgnoreCase(String titulo);
 	
-	public List <Livros> findAllByAutorContainingIgnoreCase(String autor);
+	public List <FisicoModel> findAllByAutorContainingIgnoreCase(String autor);
 	
 }

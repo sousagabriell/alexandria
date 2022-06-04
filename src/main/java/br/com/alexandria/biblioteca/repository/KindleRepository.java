@@ -5,13 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.alexandria.biblioteca.model.Kindle;
+import br.com.alexandria.biblioteca.model.KindleModel;
 
 @Repository
-public interface KindleRepository extends JpaRepository<Kindle, Long>{
+public interface KindleRepository extends JpaRepository<KindleModel, Long>{
 	
-	public List <Kindle> findAllByTituloContainingIgnoreCase(String titulo);
-	
-
+	public List <KindleModel> findAllByTituloContainingIgnoreCase(String titulo);
 
 }
