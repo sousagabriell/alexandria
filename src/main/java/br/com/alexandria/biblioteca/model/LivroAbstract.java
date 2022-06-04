@@ -15,8 +15,7 @@ import javax.validation.constraints.NotBlank;
 @Setter
 public abstract class LivroAbstract {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name="livrosequence", sequenceName="livrosequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @NotBlank
