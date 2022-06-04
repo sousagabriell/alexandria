@@ -42,6 +42,7 @@ public class tesesController {
 	
 	@PostMapping
 	public ResponseEntity<TeseModel> postPostagem (@Valid @RequestBody TeseModel postagem){
+		postagem.setTipo_livro("tese");
 		return ResponseEntity.status(HttpStatus.CREATED).body(tesesRepository.save(postagem));
 	}
 	

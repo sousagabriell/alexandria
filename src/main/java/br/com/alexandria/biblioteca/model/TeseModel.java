@@ -23,4 +23,6 @@ public class TeseModel extends LivroAbstract{
 	@NotBlank
 	private String pasta;
 
+	@NotBlank
+	private String tipo;
 }

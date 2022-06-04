@@ -43,6 +43,7 @@ public class livrosController {
 	
 	@PostMapping
 	public ResponseEntity<FisicoModel> postPostagem (@Valid @RequestBody FisicoModel postagem){
+		postagem.setTipo_livro("fisico");
 		return ResponseEntity.status(HttpStatus.CREATED).body(livrosRepository.save(postagem));
 	}
 	

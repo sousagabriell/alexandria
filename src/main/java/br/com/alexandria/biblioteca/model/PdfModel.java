@@ -26,5 +26,7 @@ public class PdfModel extends LivroAbstract{
 	@NotBlank
 	private String pasta;
 
+
+
 	
 }

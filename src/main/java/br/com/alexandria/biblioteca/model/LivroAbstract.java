@@ -47,5 +47,5 @@ public abstract class LivroAbstract {
     private String idioma;
 
     @NotBlank
-    private String tipo;
+    private String tipo_livro;
 }

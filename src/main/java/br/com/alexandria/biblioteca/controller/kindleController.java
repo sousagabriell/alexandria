@@ -43,6 +43,7 @@ public class kindleController {
 	
 	@PostMapping
 	public ResponseEntity<KindleModel> postPostagem (@Valid @RequestBody KindleModel postagem){
+		postagem.setTipo_livro("kindle");
 		return ResponseEntity.status(HttpStatus.CREATED).body(kindleRepository.save(postagem));
 	}
 	

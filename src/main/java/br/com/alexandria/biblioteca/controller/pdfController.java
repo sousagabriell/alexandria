@@ -44,6 +44,7 @@ public class pdfController {
 	
 	@PostMapping
 	public ResponseEntity<PdfModel> postPostagem (@Valid @RequestBody PdfModel postagem){
+		postagem.setTipo_livro("pdf");
 		return ResponseEntity.status(HttpStatus.CREATED).body(pdfRepository.save(postagem));
 	}
 	
