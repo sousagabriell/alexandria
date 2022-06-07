@@ -22,8 +22,6 @@ public class FisicoModel extends LivroAbstract {
 
 	@NotBlank
 	private String editora;
-	
-	@NotBlank
-	private String idioma;
+
 	
 }

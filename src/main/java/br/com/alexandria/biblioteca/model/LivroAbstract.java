@@ -44,4 +44,8 @@ public abstract class LivroAbstract {
     private String idioma;
 
     private String tipo_livro;
+
+    @NotBlank
+    private String foto;
+
 }

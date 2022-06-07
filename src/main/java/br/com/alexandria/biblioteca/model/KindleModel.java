@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tb_kindle")
@@ -18,14 +19,11 @@ import javax.validation.constraints.NotBlank;
 public class KindleModel extends LivroAbstract{
 
 	@NotBlank
-	private String foto;
-	
-	@NotBlank
 	private String edicao;
 
 	@NotBlank
 	private String editora;
 
-	@NotBlank
+	@NotNull
 	private boolean fisico;
 }
