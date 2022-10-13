@@ -27,7 +27,7 @@ public class kindleController {
 	}
 	
 
-	@GetMapping("/{id}")
+	@GetMapping("/id")
 	public ResponseEntity<Kindle> getById(@RequestParam long id) {
 		return kindleRepository.findById(id)
 			.map(resposta -> ResponseEntity.ok(resposta))
