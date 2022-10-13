@@ -48,4 +48,6 @@ public abstract class LivroAbstract {
     @NotBlank
     private String foto;
 
+    private Boolean lido;
+
 }
