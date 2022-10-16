@@ -16,7 +16,7 @@ import br.com.alexandria.biblioteca.repository.PdfRepository;
 
 @RestController
 @RequestMapping("/pdf")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin("*")
 public class pdfController {
 	
 	@Autowired

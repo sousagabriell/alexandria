@@ -37,8 +37,8 @@ public class Usuario {
 
 	@Column(name = "senha_usuario")
 	@NotNull
-	@Size(min = 8)
-	private String senha;
+	@Size(min = 6)
+		private String senha;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data_usuario = new java.sql.Date(System.currentTimeMillis());

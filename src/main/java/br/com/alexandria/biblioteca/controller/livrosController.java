@@ -14,7 +14,7 @@ import br.com.alexandria.biblioteca.repository.LivrosRepository;
 
 @RestController
 @RequestMapping("/fisico")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin("*")
 
 public class livrosController {
 	

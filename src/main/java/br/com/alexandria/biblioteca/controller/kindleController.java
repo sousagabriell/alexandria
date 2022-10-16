@@ -15,7 +15,7 @@ import br.com.alexandria.biblioteca.repository.KindleRepository;
 
 @RestController
 @RequestMapping("/kindle")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin("*")
 public class kindleController {
 	
 	@Autowired

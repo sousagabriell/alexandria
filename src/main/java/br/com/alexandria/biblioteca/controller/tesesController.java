@@ -14,7 +14,7 @@ import br.com.alexandria.biblioteca.repository.TesesRepository;
 
 @RestController
 @RequestMapping("/teses")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin("*")
 public class tesesController {
 
 	@Autowired
