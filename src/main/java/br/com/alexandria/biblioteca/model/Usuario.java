@@ -42,5 +42,4 @@ public class Usuario {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data_usuario = new java.sql.Date(System.currentTimeMillis());
-
 }

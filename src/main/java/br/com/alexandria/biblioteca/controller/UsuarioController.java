@@ -3,6 +3,7 @@ package br.com.alexandria.biblioteca.controller;
 
 import br.com.alexandria.biblioteca.model.UserLogin;
 import br.com.alexandria.biblioteca.model.Usuario;
+import br.com.alexandria.biblioteca.repository.UsuarioRepository;
 import br.com.alexandria.biblioteca.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,8 @@ import java.util.Optional;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioController {
 
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 	@Autowired
 	private UsuarioService usuarioService;
 	
@@ -33,6 +36,11 @@ public class UsuarioController {
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(usuarioService.CadastrarUsuario(usuario));
 	}
-	
+	@GetMapping("/{id}")
+	public ResponseEntity<Usuario> getByid(@PathVariable long id){
+		return usuarioRepository.findById(id).map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.notFound().build());
+	}
+
 	
 }
