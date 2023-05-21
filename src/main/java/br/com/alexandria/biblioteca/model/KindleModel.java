@@ -17,7 +17,6 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 public class KindleModel extends LivroAbstract{
-
 	@NotBlank
 	private String edicao;
 
