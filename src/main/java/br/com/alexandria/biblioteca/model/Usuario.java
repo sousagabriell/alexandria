@@ -27,9 +27,9 @@ public class Usuario {
 	@NotNull
 	private String email;
 
-	@Column(name = "usuario")
+	@Column(name = "user")
 	@NotNull
-	private String usuario;
+	private String user;
 
 	@Column(name = "foto_usuario")
 	@NotNull
