@@ -16,9 +16,9 @@ public class Usuario {
 
 	@Id
 	@Column(name = "id_usuario")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+
 	@Column(name = "nome_usuario")
 	@NotNull
 	private String nome;
@@ -27,9 +27,9 @@ public class Usuario {
 	@NotNull
 	private String email;
 
-	@Column(name = "user")
+	@Column(name = "usuario")
 	@NotNull
-	private String user;
+	private String usuario;
 
 	@Column(name = "foto_usuario")
 	@NotNull
