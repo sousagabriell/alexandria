@@ -9,14 +9,13 @@ import lombok.Setter;
 public class UserLogin {
 
 	private String nome;
-	
-	
+
 	private String usuario;
-	
-	
+
 	private String senha;
-	
-	
+
+	private String foto;
+
 	private String token;
 
 
